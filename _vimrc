@@ -6,7 +6,10 @@ set shiftwidth=4
 " ESCを2回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
+" 挿入モードに移行したとき、IMEを自動でONにしない
 set iminsert=0
+
+" サーチモードはiminsertの設定に倣う
 set imsearch=-1
 
 "-------------------------------------------------------------------------
