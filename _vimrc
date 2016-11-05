@@ -1,3 +1,14 @@
+" tabの設定
+set tabstop=4
+set cindent
+set shiftwidth=4
+
+" ESCを2回押すことでハイライトを消す
+nmap <silent> <Esc><Esc> :nohlsearch<CR>
+
+set iminsert=0
+set imsearch=-1
+
 "-------------------------------------------------------------------------
 " NeoBundle設定
 "-------------------------------------------------------------------------
@@ -16,6 +27,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " originalrepos on github
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc'
 
 " Color Scheme
 NeoBundle 'nanotech/jellybeans.vim'
