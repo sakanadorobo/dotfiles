@@ -5,7 +5,10 @@ colorscheme molokai
 set columns=120
 set lines=40
 
-" ツールバーを非表示に
+" ツールバーを非表示にする
 set guioptions-=T
+
+" メニューバーを非表示にする
+set guioptions-=m
 
 
