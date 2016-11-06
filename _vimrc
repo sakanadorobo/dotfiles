@@ -36,6 +36,29 @@ set backupdir=~/vimfiles/vimbackup
 " スワップファイル作るディレクトリの指定
 set directory=~/vimfiles/vimbackup
 
+" カーソル行を強調表示しない
+set nocursorline
+
+" 挿入モード時にカーソル行をハイライトする
+autocmd InsertEnter,InsertLeave * set cursorline!
+
+" 日本語入力をリセット
+au BufNewFile,BufRead * set iminsert=0
+
+" タブ幅をリセット
+au BufNewFile,BufRead * set tabstop=4 shiftwidth=4
+
+" .txtファイルで自動的に日本語入力ON
+" au BufNewFile,BufRead *.txt set iminsert=2
+
+" .rhtmlと.rbでタブ幅を変更
+au BufNewFile,BufRead *.rhtml   set nowrap tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
+
+" 全角スペースを視覚化
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
+au BufNewFile,BufRead * match ZenkakuSpace /　/
+
 "-------------------------------------------------------------------------
 " NeoBundle設定
 "-------------------------------------------------------------------------
