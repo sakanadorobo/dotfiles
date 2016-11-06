@@ -39,10 +39,8 @@ set directory=~/vimfiles/vimbackup
 " アンドゥファイル作るディレクトリの指定
 set undodir=~/vimfiles/vimbackup
 
-" カーソル行を強調表示しない
-set nocursorline
-
 " 挿入モード時にカーソル行をハイライトする
+au BufNewFile,BufRead * set nocursorline
 autocmd InsertEnter,InsertLeave * set cursorline!
 
 " 日本語入力をリセット
