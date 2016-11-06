@@ -36,6 +36,9 @@ set backupdir=~/vimfiles/vimbackup
 " スワップファイル作るディレクトリの指定
 set directory=~/vimfiles/vimbackup
 
+" アンドゥファイル作るディレクトリの指定
+set undodir=~/vimfiles/vimbackup
+
 " カーソル行を強調表示しない
 set nocursorline
 
