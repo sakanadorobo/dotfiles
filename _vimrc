@@ -30,6 +30,9 @@ set iminsert=0
 " サーチモードはiminsertの設定に倣う
 set imsearch=-1
 
+" ファイル変更中も他のファイルを開けるようにする
+set hidden
+
 " 外部grepの設定
 set grepprg=internal
 
