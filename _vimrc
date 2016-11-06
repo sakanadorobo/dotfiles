@@ -30,6 +30,9 @@ set iminsert=0
 " サーチモードはiminsertの設定に倣う
 set imsearch=-1
 
+" 外部grepの設定
+set grepprg=internal
+
 "バックアップファイルを作るディレクトリの指定
 set backupdir=~/vimfiles/vimbackup
 
@@ -74,7 +77,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " originalrepos on github
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc'
+
+" Filer
+NeoBundle 'Shougo/VimFiler'
+NeoBundle 'Shougo/neomru.vim'
 
 " Color Scheme
 NeoBundle 'nanotech/jellybeans.vim'
@@ -89,4 +95,42 @@ filetype plugin indent on
 NeoBundleCheck
 
 call neobundle#end()
+
+"" unite.vim {{{
+" unite.vimのプレフィックスキーを設定
+nnoremap [unite] <Nop>
+nmap <Leader>f [unite]
+
+" 入力モードで開始する
+" let g:unite_enable_start_insert=1
+
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+
+" unite.vimのキーマップを設定
+nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
+nnoremap <silent> [unite]f :<C-u>Unite<Space>file<CR>
+nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
+nnoremap <silent> [unite]a :<C-u>Unite buffer file file_mru bookmark<CR>
+nnoremap <silent> [unite]r :<C-u>Unite<Space>register<CR>
+nnoremap <silent> [unite]R :<C-u>UniteResume<CR>
+
+" grep検索
+nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+
+" カーソル位置の単語をgrep検索
+nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+
+" grep検索結果の再呼出
+nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
+
+" unite grep に ag(The Silver Searcher) を使う
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--vimgrep'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
+"" }}}
 
