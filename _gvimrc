@@ -13,7 +13,7 @@ scriptencoding utf-8
 "-------------------------------------------------------------------------
 
 " カラースキーム
-colorscheme molokai
+colorscheme summerfruit256
 
 " ウィンドウサイズ
 set columns=120
