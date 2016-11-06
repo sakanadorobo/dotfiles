@@ -34,7 +34,7 @@ set imsearch=-1
 set hidden
 
 " 外部grepの設定
-set grepprg=internal
+set grepprg=ag\ -n\ -iS
 
 "バックアップファイルを作るディレクトリの指定
 set backupdir=~/vimfiles/vimbackup
@@ -60,7 +60,7 @@ au BufNewFile,BufRead *.rhtml   set nowrap tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
 
 " ローカルパスを開いたファイルの場所に設定する
-au BufNewFile,BufRead * lcd %:h
+au BufNewFile,BufRead *.* lcd %:h
 
 "-------------------------------------------------------------------------
 " NeoBundle設定
