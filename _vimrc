@@ -55,10 +55,6 @@ au BufNewFile,BufRead * set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.rhtml   set nowrap tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
 
-" 全角スペースを視覚化
-highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
-au BufNewFile,BufRead * match ZenkakuSpace /　/
-
 "-------------------------------------------------------------------------
 " NeoBundle設定
 "-------------------------------------------------------------------------
