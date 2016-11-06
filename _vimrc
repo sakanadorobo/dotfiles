@@ -36,6 +36,9 @@ set hidden
 " 外部grepの設定
 set grepprg=ag\ -n\ -iS
 
+" grepの終了時に自動でquickfix-windowを開く
+autocmd QuickFixCmdPost *grep* cwindow
+
 "バックアップファイルを作るディレクトリの指定
 set backupdir=~/vimfiles/vimbackup
 
