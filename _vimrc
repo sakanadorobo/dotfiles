@@ -90,10 +90,15 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/VimFiler'
 NeoBundle 'Shougo/neomru.vim'
 
-" Color Scheme
+" Color Scheme (dark)
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'tomasr/molokai'
+
+" Color Scheme (light)
+NeoBundle 'vim-scripts/Lucius'
+NeoBundle 'vim-scripts/summerfruit256.vim'
+NeoBundle 'vim-scripts/pyte'
 
 " 読み込んだプラグインも含め、ファイルタイプの検出、
 " ファイルタイプ別プラグイン/インデントを有効化する
