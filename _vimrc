@@ -34,7 +34,9 @@ set imsearch=-1
 set hidden
 
 " ŠO•”grep‚Ìİ’è
-set grepprg=ag\ -n\ -iS
+if executable('ag')
+  set grepprg=ag\ -n\ -iS
+endif
 
 " grep‚ÌI—¹‚É©“®‚Åquickfix-window‚ğŠJ‚­
 autocmd QuickFixCmdPost *grep* cwindow
