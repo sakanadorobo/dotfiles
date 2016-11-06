@@ -1,6 +1,24 @@
-" tabの設定
+scriptencoding utf-8
+" Vimの個人用設定ファイル(_vimrc)
+"
+" Last Change: 06-Nov-2016.
+" Maintainer:  HIDEKI Hara
+"
+" 解説:
+" このファイルにはVimの起動時に必ず設定される、編集時の挙動に関する設定が書
+" かれています。
+
+"-------------------------------------------------------------------------
+" 個人用設定
+"-------------------------------------------------------------------------
+
+" タブの画面上での幅
 set tabstop=4
+
+" C言語スタイルの自動インデント
 set cindent
+
+" シフト移動幅
 set shiftwidth=4
 
 " ESCを2回押すことでハイライトを消す
@@ -12,10 +30,16 @@ set iminsert=0
 " サーチモードはiminsertの設定に倣う
 set imsearch=-1
 
+"バックアップファイルを作るディレクトリの指定
+set backupdir=~/vimfiles/vimbackup
+
+" スワップファイル作るディレクトリの指定
+set directory=~/vimfiles/vimbackup
+
 "-------------------------------------------------------------------------
 " NeoBundle設定
 "-------------------------------------------------------------------------
-"
+
 " vim起動時のみruntimepathにneobundle.vimを追加
 if has('vim_starting')
   set nocompatible
