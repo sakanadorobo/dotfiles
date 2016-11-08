@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " GVimの個人用設定ファイル(_gvimrc)
 "
-" Last Change: 06-Nov-2016.
+" Last Change: 08-Nov-2016.
 " Maintainer:  HIDEKI Hara
 "
 " 解説:
@@ -13,7 +13,7 @@ scriptencoding utf-8
 "-------------------------------------------------------------------------
 
 " カラースキーム
-colorscheme summerfruit256
+colorscheme molokai
 
 " ウィンドウサイズ
 set columns=120
