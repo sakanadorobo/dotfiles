@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " Vimの個人用設定ファイル(_vimrc)
 "
-" Last Change: 06-Nov-2016.
+" Last Change: 09-Nov-2016.
 " Maintainer:  HIDEKI Hara
 "
 " 解説:
@@ -52,6 +52,12 @@ set directory=~/vimfiles/vimbackup
 
 " アンドゥファイル作るディレクトリの指定
 set undodir=~/vimfiles/vimbackup
+
+" Vimfilerをデフォルトにする
+let g:vimfiler_as_default_explorer = 1
+
+" ファイラを開く
+noremap  <silent> <C-X><C-T> :VimFilerCurrentDir -split -simple -winwidth=34 -no-quit<CR>
 
 " 挿入モード時にカーソル行をハイライトする
 au BufNewFile,BufRead * set nocursorline
