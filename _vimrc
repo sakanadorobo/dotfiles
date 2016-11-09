@@ -36,6 +36,9 @@ set imsearch=-1
 " ファイル変更中も他のファイルを開けるようにする
 set hidden
 
+" 0で始まる数値を8進数でなく16進数として扱う
+set nrformats=
+
 " 外部grepの設定
 if executable('ag')
   set grepprg=ag\ -n\ -iS
