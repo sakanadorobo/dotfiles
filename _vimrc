@@ -112,6 +112,10 @@ NeoBundle 'vim-scripts/Lucius'
 NeoBundle 'vim-scripts/summerfruit256.vim'
 NeoBundle 'vim-scripts/pyte'
 
+" 指定した文字を()や""で囲んだりするプラグイン
+" コマンドの詳しい説明は :help surround をチェック
+NeoBundle 'tpope/vim-surround'
+
 " 読み込んだプラグインも含め、ファイルタイプの検出、
 " ファイルタイプ別プラグイン/インデントを有効化する
 filetype plugin indent on
