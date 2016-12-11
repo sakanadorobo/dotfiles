@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " Vimの個人用設定ファイル(_vimrc)
 "
-" Last Change: 21-Nov-2016.
+" Last Change: 06-Dec-2016.
 " Maintainer:  HIDEKI Hara
 "
 " 解説:
@@ -118,6 +118,13 @@ NeoBundle 'tpope/vim-surround'
 
 " 補完機能を強化するプラグイン
 NeoBundle 'Shougo/neocomplete.vim'
+
+" QML Syntax hilight
+NeoBundleLazy 'peterhoeg/vim-qml', {
+\	'autoload' : {
+\		'filetypes' : ['qml'],
+\	},
+\ }
 
 " 読み込んだプラグインも含め、ファイルタイプの検出、
 " ファイルタイプ別プラグイン/インデントを有効化する
