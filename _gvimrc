@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " GVimの個人用設定ファイル(_gvimrc)
 "
-" Last Change: 08-Nov-2016.
+" Last Change: 11-Dec-2016.
 " Maintainer:  HIDEKI Hara
 "
 " 解説:
@@ -27,3 +27,10 @@ set guioptions-=m
 
 " ビープ音を抑制する
 set visualbell t_vb=
+
+" フォントを指定
+if has('win32') || has ('win64')
+	set guifont=Ricty_Diminished:h12:cSHIFTJIS
+	set rop=type:directx
+endif
+
