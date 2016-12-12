@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " GVimの個人用設定ファイル(_gvimrc)
 "
-" Last Change: 11-Dec-2016.
+" Last Change: 12-Dec-2016.
 " Maintainer:  HIDEKI Hara
 "
 " 解説:
@@ -19,8 +19,15 @@ colorscheme molokai
 set columns=120
 set lines=40
 
-" ツールバーを非表示にする
+" ツールバー
 set guioptions-=T
+
+" スクロールバーを非表示にする
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+set guioptions-=b
 
 " メニューバーを非表示にする
 set guioptions-=m

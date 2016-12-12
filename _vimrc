@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " Vimの個人用設定ファイル(_vimrc)
 "
-" Last Change: 06-Dec-2016.
+" Last Change: 12-Dec-2016.
 " Maintainer:  HIDEKI Hara
 "
 " 解説:
