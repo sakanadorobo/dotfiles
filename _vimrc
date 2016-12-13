@@ -1,96 +1,96 @@
 scriptencoding utf-8
-" Vim‚ÌŒÂl—pİ’èƒtƒ@ƒCƒ‹(_vimrc)
+" Vimã®å€‹äººç”¨è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«(_vimrc)
 "
 " Last Change: 12-Dec-2016.
 " Maintainer:  HIDEKI Hara
 "
-" ‰ğà:
-" ‚±‚Ìƒtƒ@ƒCƒ‹‚É‚ÍVim‚Ì‹N“®‚É•K‚¸İ’è‚³‚ê‚éA•ÒW‚Ì‹““®‚ÉŠÖ‚·‚éİ’è‚ª‘
-" ‚©‚ê‚Ä‚¢‚Ü‚·B
+" è§£èª¬:
+" ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã«ã¯Vimã®èµ·å‹•æ™‚ã«å¿…ãšè¨­å®šã•ã‚Œã‚‹ã€ç·¨é›†æ™‚ã®æŒ™å‹•ã«é–¢ã™ã‚‹è¨­å®šãŒæ›¸
+" ã‹ã‚Œã¦ã„ã¾ã™ã€‚
 
 "-------------------------------------------------------------------------
-" ŒÂl—pİ’è
+" å€‹äººç”¨è¨­å®š
 "-------------------------------------------------------------------------
 
-" s”Ô†‚Ì•\¦
+" è¡Œç•ªå·ã®è¡¨ç¤º
 set number
 
-" ƒ^ƒu‚Ì‰æ–Êã‚Å‚Ì•
+" ã‚¿ãƒ–ã®ç”»é¢ä¸Šã§ã®å¹…
 set tabstop=4
 
-" CŒ¾ŒêƒXƒ^ƒCƒ‹‚Ì©“®ƒCƒ“ƒfƒ“ƒg
+" Cè¨€èªã‚¹ã‚¿ã‚¤ãƒ«ã®è‡ªå‹•ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆ
 set cindent
 
-" ƒVƒtƒgˆÚ“®•
+" ã‚·ãƒ•ãƒˆç§»å‹•å¹…
 set shiftwidth=4
 
-" ESC‚ğ2‰ñ‰Ÿ‚·‚±‚Æ‚ÅƒnƒCƒ‰ƒCƒg‚ğÁ‚·
+" ESCã‚’2å›æŠ¼ã™ã“ã¨ã§ãƒã‚¤ãƒ©ã‚¤ãƒˆã‚’æ¶ˆã™
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
-" ‘}“üƒ‚[ƒh‚ÉˆÚs‚µ‚½‚Æ‚«AIME‚ğ©“®‚ÅON‚É‚µ‚È‚¢
+" æŒ¿å…¥ãƒ¢ãƒ¼ãƒ‰ã«ç§»è¡Œã—ãŸã¨ãã€IMEã‚’è‡ªå‹•ã§ONã«ã—ãªã„
 set iminsert=0
 
-" ƒT[ƒ`ƒ‚[ƒh‚Íiminsert‚Ìİ’è‚É•í‚¤
+" ã‚µãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰ã¯iminsertã®è¨­å®šã«å€£ã†
 set imsearch=-1
 
-" ƒtƒ@ƒCƒ‹•ÏX’†‚à‘¼‚Ìƒtƒ@ƒCƒ‹‚ğŠJ‚¯‚é‚æ‚¤‚É‚·‚é
+" ãƒ•ã‚¡ã‚¤ãƒ«å¤‰æ›´ä¸­ã‚‚ä»–ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã‘ã‚‹ã‚ˆã†ã«ã™ã‚‹
 set hidden
 
-" 0‚Ån‚Ü‚é”’l‚ğ8i”‚Å‚È‚­16i”‚Æ‚µ‚Äˆµ‚¤
+" 0ã§å§‹ã¾ã‚‹æ•°å€¤ã‚’8é€²æ•°ã§ãªã16é€²æ•°ã¨ã—ã¦æ‰±ã†
 set nrformats=
 
-" ŠO•”grep‚Ìİ’è
+" å¤–éƒ¨grepã®è¨­å®š
 if executable('ag')
   set grepprg=ag\ -n\ -iS
 endif
 
-" grep‚ÌI—¹‚É©“®‚Åquickfix-window‚ğŠJ‚­
+" grepã®çµ‚äº†æ™‚ã«è‡ªå‹•ã§quickfix-windowã‚’é–‹ã
 autocmd QuickFixCmdPost *grep* cwindow
 
-"ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ğì‚éƒfƒBƒŒƒNƒgƒŠ‚Ìw’è
+"ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®æŒ‡å®š
 set backupdir=~/vimfiles/vimbackup
 
-" ƒXƒƒbƒvƒtƒ@ƒCƒ‹ì‚éƒfƒBƒŒƒNƒgƒŠ‚Ìw’è
+" ã‚¹ãƒ¯ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ä½œã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®æŒ‡å®š
 set directory=~/vimfiles/vimbackup
 
-" ƒAƒ“ƒhƒDƒtƒ@ƒCƒ‹ì‚éƒfƒBƒŒƒNƒgƒŠ‚Ìw’è
+" ã‚¢ãƒ³ãƒ‰ã‚¥ãƒ•ã‚¡ã‚¤ãƒ«ä½œã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®æŒ‡å®š
 set undodir=~/vimfiles/vimbackup
 
-" Vimfiler‚ğƒfƒtƒHƒ‹ƒg‚É‚·‚é
+" Vimfilerã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã«ã™ã‚‹
 let g:vimfiler_as_default_explorer = 1
 
-" ƒtƒ@ƒCƒ‰‚ğŠJ‚­
+" ãƒ•ã‚¡ã‚¤ãƒ©ã‚’é–‹ã
 noremap  <silent> <C-X><C-T> :VimFilerCurrentDir -split -simple -winwidth=35 -no-quit<CR>
 
-" ‘}“üƒ‚[ƒh‚ÉƒJ[ƒ\ƒ‹s‚ğƒnƒCƒ‰ƒCƒg‚·‚é
+" æŒ¿å…¥ãƒ¢ãƒ¼ãƒ‰æ™‚ã«ã‚«ãƒ¼ã‚½ãƒ«è¡Œã‚’ãƒã‚¤ãƒ©ã‚¤ãƒˆã™ã‚‹
 au BufNewFile,BufRead * set nocursorline
 autocmd InsertEnter,InsertLeave * set cursorline!
 
-" “ú–{Œê“ü—Í‚ğƒŠƒZƒbƒg
+" æ—¥æœ¬èªå…¥åŠ›ã‚’ãƒªã‚»ãƒƒãƒˆ
 au BufNewFile,BufRead * set iminsert=0
 
-" ƒ^ƒu•‚ğƒŠƒZƒbƒg
+" ã‚¿ãƒ–å¹…ã‚’ãƒªã‚»ãƒƒãƒˆ
 au BufNewFile,BufRead * set tabstop=4 shiftwidth=4
 
-" .rhtml‚Æ.rb‚Åƒ^ƒu•‚ğ•ÏX
+" .rhtmlã¨.rbã§ã‚¿ãƒ–å¹…ã‚’å¤‰æ›´
 au BufNewFile,BufRead *.rhtml   set nowrap tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
 
-" ƒ[ƒJƒ‹ƒpƒX‚ğŠJ‚¢‚½ƒtƒ@ƒCƒ‹‚ÌêŠ‚Éİ’è‚·‚é
+" ãƒ­ãƒ¼ã‚«ãƒ«ãƒ‘ã‚¹ã‚’é–‹ã„ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®å ´æ‰€ã«è¨­å®šã™ã‚‹
 au BufNewFile,BufRead *.* lcd %:h
 
 "-------------------------------------------------------------------------
-" NeoBundleİ’è
+" NeoBundleè¨­å®š
 "-------------------------------------------------------------------------
 
-" vim‹N“®‚Ì‚İruntimepath‚Éneobundle.vim‚ğ’Ç‰Á
+" vimèµ·å‹•æ™‚ã®ã¿runtimepathã«neobundle.vimã‚’è¿½åŠ 
 if has('vim_starting')
   set nocompatible
   set runtimepath+=~/vimfiles/bundle/neobundle.vim
 endif
 
-" neobundle.vim‚Ì‰Šú‰»
-" NeoBundle‚ğXV‚·‚é‚½‚ß‚Ìİ’è
+" neobundle.vimã®åˆæœŸåŒ–
+" NeoBundleã‚’æ›´æ–°ã™ã‚‹ãŸã‚ã®è¨­å®š
 call neobundle#begin(expand('~/vimfiles/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -112,11 +112,11 @@ NeoBundle 'vim-scripts/Lucius'
 NeoBundle 'vim-scripts/summerfruit256.vim'
 NeoBundle 'vim-scripts/pyte'
 
-" w’è‚µ‚½•¶š‚ğ()‚â""‚ÅˆÍ‚ñ‚¾‚è‚·‚éƒvƒ‰ƒOƒCƒ“
-" ƒRƒ}ƒ“ƒh‚ÌÚ‚µ‚¢à–¾‚Í :help surround ‚ğƒ`ƒFƒbƒN
+" æŒ‡å®šã—ãŸæ–‡å­—ã‚’()ã‚„""ã§å›²ã‚“ã ã‚Šã™ã‚‹ãƒ—ãƒ©ã‚°ã‚¤ãƒ³
+" ã‚³ãƒãƒ³ãƒ‰ã®è©³ã—ã„èª¬æ˜ã¯ :help surround ã‚’ãƒã‚§ãƒƒã‚¯
 NeoBundle 'tpope/vim-surround'
 
-" •âŠ®‹@”\‚ğ‹­‰»‚·‚éƒvƒ‰ƒOƒCƒ“
+" è£œå®Œæ©Ÿèƒ½ã‚’å¼·åŒ–ã™ã‚‹ãƒ—ãƒ©ã‚°ã‚¤ãƒ³
 NeoBundle 'Shougo/neocomplete.vim'
 
 " QML Syntax hilight
@@ -126,28 +126,28 @@ NeoBundleLazy 'peterhoeg/vim-qml', {
 \	},
 \ }
 
-" “Ç‚İ‚ñ‚¾ƒvƒ‰ƒOƒCƒ“‚àŠÜ‚ßAƒtƒ@ƒCƒ‹ƒ^ƒCƒv‚ÌŒŸoA
-" ƒtƒ@ƒCƒ‹ƒ^ƒCƒv•Êƒvƒ‰ƒOƒCƒ“/ƒCƒ“ƒfƒ“ƒg‚ğ—LŒø‰»‚·‚é
+" èª­ã¿è¾¼ã‚“ã ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚‚å«ã‚ã€ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒ—ã®æ¤œå‡ºã€
+" ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒ—åˆ¥ãƒ—ãƒ©ã‚°ã‚¤ãƒ³/ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’æœ‰åŠ¹åŒ–ã™ã‚‹
 filetype plugin indent on
 
-" ƒCƒ“ƒXƒg[ƒ‹‚Ìƒ`ƒFƒbƒN
+" ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã®ãƒã‚§ãƒƒã‚¯
 NeoBundleCheck
 
 call neobundle#end()
 
 "" unite.vim {{{
-" unite.vim‚ÌƒvƒŒƒtƒBƒbƒNƒXƒL[‚ğİ’è
+" unite.vimã®ãƒ—ãƒ¬ãƒ•ã‚£ãƒƒã‚¯ã‚¹ã‚­ãƒ¼ã‚’è¨­å®š
 nnoremap [unite] <Nop>
 nmap <Leader>f [unite]
 
-" “ü—Íƒ‚[ƒh‚ÅŠJn‚·‚é
+" å…¥åŠ›ãƒ¢ãƒ¼ãƒ‰ã§é–‹å§‹ã™ã‚‹
 " let g:unite_enable_start_insert=1
 
-" ‘å•¶š¬•¶š‚ğ‹æ•Ê‚µ‚È‚¢
+" å¤§æ–‡å­—å°æ–‡å­—ã‚’åŒºåˆ¥ã—ãªã„
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 
-" unite.vim‚ÌƒL[ƒ}ƒbƒv‚ğİ’è
+" unite.vimã®ã‚­ãƒ¼ãƒãƒƒãƒ—ã‚’è¨­å®š
 nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
 nnoremap <silent> [unite]f :<C-u>Unite<Space>file<CR>
 nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
@@ -155,16 +155,16 @@ nnoremap <silent> [unite]a :<C-u>Unite buffer file file_mru bookmark<CR>
 nnoremap <silent> [unite]r :<C-u>Unite<Space>register<CR>
 nnoremap <silent> [unite]R :<C-u>UniteResume<CR>
 
-" grepŒŸõ
+" grepæ¤œç´¢
 nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 
-" ƒJ[ƒ\ƒ‹ˆÊ’u‚Ì’PŒê‚ğgrepŒŸõ
+" ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã®å˜èªã‚’grepæ¤œç´¢
 nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
 
-" grepŒŸõŒ‹‰Ê‚ÌÄŒÄo
+" grepæ¤œç´¢çµæœã®å†å‘¼å‡º
 nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 
-" unite grep ‚É ag(The Silver Searcher) ‚ğg‚¤
+" unite grep ã« ag(The Silver Searcher) ã‚’ä½¿ã†
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--vimgrep'
