@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " Vimの個人用設定ファイル(_vimrc)
 "
-" Last Change: 20-Dec-2016.
+" Last Change: 04-Jun-2017.
 " Maintainer:  HIDEKI Hara
 "
 " 解説:
@@ -40,8 +40,8 @@ set hidden
 set nrformats=
 
 " 外部grepの設定
-if executable('ag')
-  set grepprg=ag\ -n\ -iS
+if executable('pt')
+  set grepprg=pt\ -iS
 endif
 
 " grepの終了時に自動でquickfix-windowを開く
@@ -164,11 +164,12 @@ nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W
 " grep検索結果の再呼出
 nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 
-" unite grep に ag(The Silver Searcher) を使う
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--vimgrep'
+" unite grep に pt(The Platinum Searcher) を使う
+if executable('pt')
+  let g:unite_source_grep_command = 'pt'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
   let g:unite_source_grep_recursive_opt = ''
+  let g:unite_source_grep_encoding = 'utf-8'
 endif
 
 "" }}}
