@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " Vimの個人用設定ファイル(_vimrc)
 "
-" Last Change: 21-Mar-2019.
+" Last Change: 22-Mar-2019.
 "
 " 解説:
 " このファイルにはVimの起動時に必ず設定される、編集時の挙動に関する設定が書
@@ -78,6 +78,10 @@ au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
 " ローカルパスを開いたファイルの場所に設定する
 au BufNewFile,BufRead *.* lcd %:h
 
+"-------------------------------------------------------------------------
+" プラグイン設定
+"-------------------------------------------------------------------------
+
 let s:dein_dir = expand('~/.vim/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
@@ -91,23 +95,22 @@ endif
 
 execute 'set runtimepath^=' . s:dein_repo_dir
 
-"-------------------------------------------------------------------------
-" dein設定
-"-------------------------------------------------------------------------
-
 call dein#begin(s:dein_dir)
 
+" プラグインマネージャー
 call dein#add('Shougo/dein.vim')
+
+" 補完機能
 call dein#add('Shougo/neocomplete.vim')
-call dein#add('Shougo/unite.vim')
 
 " Snippet
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 
 " Filer
-call dein#add('Shougo/VimFiler')
+call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/VimFiler')
 
 " Color Scheme (dark)
 call dein#add('nanotech/jellybeans.vim')
@@ -119,12 +122,10 @@ call dein#add('vim-scripts/Lucius')
 call dein#add('vim-scripts/summerfruit256.vim')
 call dein#add('vim-scripts/pyte')
 
+" surround
 " 指定した文字を()や""で囲んだりするプラグイン
 " コマンドの詳しい説明は :help surround をチェック
 call dein#add('tpope/vim-surround')
-
-" 補完機能を強化するプラグイン
-call dein#add('Shougo/neocomplete.vim')
 
 call dein#end()
 
@@ -134,7 +135,12 @@ endif
 
 filetype plugin indent on
 
+"-------------------------------------------------------------------------
+" プラグイン毎の設定
+"-------------------------------------------------------------------------
+
 "" unite.vim {{{
+
 " unite.vimのプレフィックスキーを設定
 nnoremap [unite] <Nop>
 nmap <Leader>f [unite]
@@ -166,15 +172,15 @@ nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 " unite grep に pt(The Platinum Searcher) を使う
 if executable('pt')
   let g:unite_source_grep_command = 'pt'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
   let g:unite_source_grep_encoding = 'utf-8'
 endif
 
-"" }}}
+"" unite.vim }}}
 
 "" neocomplete {{{
-"
+
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
@@ -227,7 +233,29 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 "let g:neocomplete#disable_auto_complete = 1
 "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
-" For neosnippet {{{
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+"" neocomplete }}}
+
+"" neosnippet {{{
+
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -248,26 +276,5 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
-" }}}
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-"" }}}
+"" neosnippet }}}
 
