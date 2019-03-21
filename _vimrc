@@ -1,8 +1,7 @@
 scriptencoding utf-8
 " Vimの個人用設定ファイル(_vimrc)
 "
-" Last Change: 14-Mar-2019.
-" Maintainer:  HIDEKI Hara
+" Last Change: 21-Mar-2019.
 "
 " 解説:
 " このファイルにはVimの起動時に必ず設定される、編集時の挙動に関する設定が書
@@ -79,65 +78,61 @@ au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
 " ローカルパスを開いたファイルの場所に設定する
 au BufNewFile,BufRead *.* lcd %:h
 
-"-------------------------------------------------------------------------
-" NeoBundle設定
-"-------------------------------------------------------------------------
+let s:dein_dir = expand('~/.vim/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-" vim起動時のみruntimepathにneobundle.vimを追加
-if has('vim_starting')
-  set nocompatible
-  set runtimepath+=~/vimfiles/bundle/neobundle.vim
+if &compatible
+	set nocompatible
 endif
 
-" neobundle.vimの初期化
-" NeoBundleを更新するための設定
-call neobundle#begin(expand('~/vimfiles/bundle'))
-NeoBundleFetch 'Shougo/neobundle.vim'
+if !isdirectory(s:dein_repo_dir)
+	execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
+endif
 
-" originalrepos on github
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/unite.vim'
+execute 'set runtimepath^=' . s:dein_repo_dir
+
+"-------------------------------------------------------------------------
+" dein設定
+"-------------------------------------------------------------------------
+
+call dein#begin(s:dein_dir)
+
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/unite.vim')
 
 " Snippet
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
 
 " Filer
-NeoBundle 'Shougo/VimFiler'
-NeoBundle 'Shougo/neomru.vim'
+call dein#add('Shougo/VimFiler')
+call dein#add('Shougo/neomru.vim')
 
 " Color Scheme (dark)
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'tomasr/molokai'
+call dein#add('nanotech/jellybeans.vim')
+call dein#add('w0ng/vim-hybrid')
+call dein#add('tomasr/molokai')
 
 " Color Scheme (light)
-NeoBundle 'vim-scripts/Lucius'
-NeoBundle 'vim-scripts/summerfruit256.vim'
-NeoBundle 'vim-scripts/pyte'
+call dein#add('vim-scripts/Lucius')
+call dein#add('vim-scripts/summerfruit256.vim')
+call dein#add('vim-scripts/pyte')
 
 " 指定した文字を()や""で囲んだりするプラグイン
 " コマンドの詳しい説明は :help surround をチェック
-NeoBundle 'tpope/vim-surround'
+call dein#add('tpope/vim-surround')
 
 " 補完機能を強化するプラグイン
-NeoBundle 'Shougo/neocomplete.vim'
+call dein#add('Shougo/neocomplete.vim')
 
-" QML Syntax hilight
-NeoBundleLazy 'peterhoeg/vim-qml', {
-\	'autoload' : {
-\		'filetypes' : ['qml'],
-\	},
-\ }
+call dein#end()
 
-" 読み込んだプラグインも含め、ファイルタイプの検出、
-" ファイルタイプ別プラグイン/インデントを有効化する
+if dein#check_install()
+	call dein#install()
+endif
+
 filetype plugin indent on
-
-" インストールのチェック
-NeoBundleCheck
-
-call neobundle#end()
 
 "" unite.vim {{{
 " unite.vimのプレフィックスキーを設定
