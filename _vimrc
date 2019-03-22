@@ -1,14 +1,14 @@
-scriptencoding utf-8
+﻿scriptencoding utf-8
 " Vimの個人用設定ファイル(_vimrc)
 "
-" Last Change: 22-Mar-2019.
+" Last Change: 24-Mar-2019.
 "
 " 解説:
 " このファイルにはVimの起動時に必ず設定される、編集時の挙動に関する設定が書
 " かれています。
 
 "-------------------------------------------------------------------------
-" 個人用設定
+" 基本設定
 "-------------------------------------------------------------------------
 
 " 行番号の表示
@@ -55,12 +55,6 @@ set directory=~/vimfiles/vimbackup
 " アンドゥファイル作るディレクトリの指定
 set undodir=~/vimfiles/vimbackup
 
-" Vimfilerをデフォルトにする
-let g:vimfiler_as_default_explorer = 1
-
-" ファイラを開く
-noremap  <silent> <C-X><C-T> :VimFilerCurrentDir -split -simple -winwidth=35 -no-quit<CR>
-
 " 挿入モード時にカーソル行をハイライトする
 au BufNewFile,BufRead * set nocursorline
 autocmd InsertEnter,InsertLeave * set cursorline!
@@ -75,8 +69,55 @@ au BufNewFile,BufRead * set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.rhtml   set nowrap tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
 
-" ローカルパスを開いたファイルの場所に設定する
-au BufNewFile,BufRead *.* lcd %:h
+" ローカルパスを開いているファイルの場所に設定
+" (用途によりこの設定は邪魔になるかも)
+au BufEnter *.*,.*,_* lcd %:h
+
+"-------------------------------------------------------------------------
+" キーマッピング
+"-------------------------------------------------------------------------
+
+" VimnFilerを開く
+noremap  <silent> ,e :VimFilerCurrentDir -split -simple -winwidth=35 -no-quit<CR>
+
+" Unite listを開く
+nnoremap <silent> ,b :<C-u>Unite<Space>buffer<CR>
+nnoremap <silent> ,f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ,m :<C-u>Unite<Space>file_mru<CR>
+noremap  <silent> <C-P> :<C-u>Unite<Space>file_mru<CR>
+
+" Unite list 選択時ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+
+" Unite grep (,の数だけディレクトリを上に移動して検索)
+nnoremap <silent> ,g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> ,,g :<C-u>Unite grep:.. -buffer-name=search-buffer<CR>
+nnoremap <silent> ,,,g :<C-u>Unite grep:../.. -buffer-name=search-buffer<CR>
+nnoremap <silent> ,,,,g :<C-u>Unite grep:../../.. -buffer-name=search-buffer<CR>
+nnoremap <silent> ,,,,,g :<C-u>Unite grep:../../../.. -buffer-name=search-buffer<CR>
+
+" カーソル位置の単語をUnite grep (,の数だけディレクトリを上に移動して検索)
+nnoremap <silent> ,* :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W><CR>
+nnoremap <silent> ,,* :<C-u>Unite grep:.. -buffer-name=search-buffer<CR><C-R><C-W><CR>
+nnoremap <silent> ,,,* :<C-u>Unite grep:../.. -buffer-name=search-buffer<CR><C-R><C-W><CR>
+nnoremap <silent> ,,,,* :<C-u>Unite grep:../../.. -buffer-name=search-buffer<CR><C-R><C-W><CR>
+nnoremap <silent> ,,,,,* :<C-u>Unite grep:../../../.. -buffer-name=search-buffer<CR><C-R><C-W><CR>
+
+" Unite grepの検索結果を再呼出
+nnoremap <silent> ,r :<C-u>UniteResume search-buffer<CR>
+
+" tagsファイル生成
+if executable('ctags')
+  nnoremap <silent> ,t :<C-u>!ctags -R<CR><CR>
+endif
+
+" terminalを開く
+if executable('bash')
+  nnoremap <silent> <C-@> :<C-u>term ++close bash<CR>
+endif
 
 "-------------------------------------------------------------------------
 " プラグイン設定
@@ -99,6 +140,9 @@ call dein#begin(s:dein_dir)
 
 " プラグインマネージャー
 call dein#add('Shougo/dein.vim')
+
+" 非同期処理
+" call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 
 " 補完機能
 call dein#add('Shougo/neocomplete.vim')
@@ -136,38 +180,21 @@ endif
 filetype plugin indent on
 
 "-------------------------------------------------------------------------
-" プラグイン毎の設定
+" プラグイン個別設定
 "-------------------------------------------------------------------------
 
+"" Vimfiler {{{
+
+" Vimfilerをデフォルトにする
+let g:vimfiler_as_default_explorer = 1
+
+"" Vimfiler }}}
+
 "" unite.vim {{{
-
-" unite.vimのプレフィックスキーを設定
-nnoremap [unite] <Nop>
-nmap <Leader>f [unite]
-
-" 入力モードで開始する
-" let g:unite_enable_start_insert=1
 
 " 大文字小文字を区別しない
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
-
-" unite.vimのキーマップを設定
-nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
-nnoremap <silent> [unite]f :<C-u>Unite<Space>file<CR>
-nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
-nnoremap <silent> [unite]a :<C-u>Unite buffer file file_mru bookmark<CR>
-nnoremap <silent> [unite]r :<C-u>Unite<Space>register<CR>
-nnoremap <silent> [unite]R :<C-u>UniteResume<CR>
-
-" grep検索
-nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-
-" カーソル位置の単語をgrep検索
-nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
-
-" grep検索結果の再呼出
-nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 
 " unite grep に pt(The Platinum Searcher) を使う
 if executable('pt')
@@ -272,9 +299,9 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+"if has('conceal')
+"  set conceallevel=2 concealcursor=niv
+"endif
 
 "" neosnippet }}}
 
