@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " GVimの個人用設定ファイル(_gvimrc)
 "
-" Last Change: 12-Dec-2016.
+" Last Change: 01-Apr-2019.
 " Maintainer:  HIDEKI Hara
 "
 " 解説:
@@ -35,9 +35,45 @@ set guioptions-=m
 " ビープ音を抑制する
 set visualbell t_vb=
 
-" フォントを指定
 if has('win32') || has ('win64')
+	"半角文字フォントの設定
+"	set guifont=MS_Gothic:h10:cSHIFTJIS
 	set guifont=Ricty_Diminished:h12:cSHIFTJIS
+
+	"全角文字フォントの設定
+"	set guifontwide=MS_Gothic:h10:cSHIFTJIS
+	set guifontwide=Ricty_Diminished:h12:cSHIFTJIS
 	set rop=type:directx
+
+	"Git bashの起動設定
+	if executable('bash')
+	nnoremap <silent> <C-@> :<C-u>call GitBash()<CR>
+
+	function! GitBash()
+		" 日本語Windowsの場合`ja`が設定されるので、入力ロケールに合わせたUTF-8に設定しなおす
+		let l:env = {
+					\ 'LANG': systemlist('"C:/Program Files/Git/usr/bin/locale.exe" -iU')[0],
+					\ }
+
+		" remote連携のための設定
+		if has('clientserver')
+			call extend(l:env, {
+						\ 'GVIM': $VIMRUNTIME,
+						\ 'VIM_SERVERNAME': v:servername,
+						\ })
+		endif
+
+		" term_startでgit for windowsのbashを実行する
+		call term_start(['bash.exe', '-l'], {
+					\ 'term_name': 'Git Bash',
+					\ 'term_finish': 'close',
+					\ 'curwin': v:false,
+					\ 'cwd': getcwd(),
+					\ 'env': l:env,
+					\ })
+
+	endfunction
+endif
+
 endif
 
