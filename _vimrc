@@ -167,11 +167,16 @@ call dein#add('Shougo/VimFiler')
 call dein#add('nanotech/jellybeans.vim')
 call dein#add('w0ng/vim-hybrid')
 call dein#add('tomasr/molokai')
+call dein#add('jacoborus/tender.vim')
+call dein#add('romainl/Apprentice')
+call dein#add('dracula/vim')
 
 " Color Scheme (light)
 call dein#add('vim-scripts/Lucius')
 call dein#add('vim-scripts/summerfruit256.vim')
 call dein#add('vim-scripts/pyte')
+call dein#add('reedes/vim-colors-pencil')
+call dein#add('freeo/vim-kalisi')
 
 " surround
 " 指定した文字を()や""で囲んだりするプラグイン
