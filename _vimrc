@@ -1,7 +1,7 @@
 ﻿scriptencoding utf-8
 " Vimの個人用設定ファイル(_vimrc)
 "
-" Last Change: 24-Mar-2019.
+" Last Change: 01-Apr-2019.
 "
 " 解説:
 " このファイルにはVimの起動時に必ず設定される、編集時の挙動に関する設定が書
@@ -10,6 +10,11 @@
 "-------------------------------------------------------------------------
 " 基本設定
 "-------------------------------------------------------------------------
+
+" エンコーディング
+set encoding=utf-8
+set fileencodings=utf-8,sjis
+set termencoding=utf-8
 
 " 行番号の表示
 set number
@@ -131,7 +136,7 @@ if &compatible
 endif
 
 if !isdirectory(s:dein_repo_dir)
-	execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
+	execute '!git clone https://github.com/Shougo/dein.vim.git' s:dein_repo_dir
 endif
 
 execute 'set runtimepath^=' . s:dein_repo_dir
@@ -142,7 +147,9 @@ call dein#begin(s:dein_dir)
 call dein#add('Shougo/dein.vim')
 
 " 非同期処理
-" call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+if has('mac')
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+endif
 
 " 補完機能
 call dein#add('Shougo/neocomplete.vim')
