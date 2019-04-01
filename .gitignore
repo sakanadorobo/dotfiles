@@ -1,8 +1,9 @@
-# bundle ディレクトリ以下のファイルを無視
-vimfiles/bundle/
+# vimfiles ディレクトリ以下のファイルを無視
+vimfiles/
 
 # バックアップ、スワップファイルを無視
 .*~
 *~
 *.swp
+
 
