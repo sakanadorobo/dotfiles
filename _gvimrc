@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " GVimの個人用設定ファイル(_gvimrc)
 "
-" Last Change: 01-Apr-2019.
+" Last Change: 03-Apr-2019.
 " Maintainer:  HIDEKI Hara
 "
 " 解説:
@@ -16,8 +16,8 @@ scriptencoding utf-8
 colorscheme tender
 
 " ウィンドウサイズ
-set columns=120
-set lines=40
+set columns=200
+set lines=52
 
 " ツールバー
 set guioptions-=T
@@ -37,12 +37,12 @@ set visualbell t_vb=
 
 if has('win32') || has ('win64')
 	"半角文字フォントの設定
-"	set guifont=MS_Gothic:h10:cSHIFTJIS
-	set guifont=Ricty_Diminished:h12:cSHIFTJIS
+	set guifont=MS_Gothic:h10:cSHIFTJIS
+"	set guifont=Ricty_Diminished:h11:cSHIFTJIS
 
 	"全角文字フォントの設定
-"	set guifontwide=MS_Gothic:h10:cSHIFTJIS
-	set guifontwide=Ricty_Diminished:h12:cSHIFTJIS
+	set guifontwide=MS_Gothic:h10:cSHIFTJIS
+"	set guifontwide=Ricty_Diminished:h11:cSHIFTJIS
 	set rop=type:directx
 
 	"Git bashの起動設定
@@ -63,11 +63,15 @@ if has('win32') || has ('win64')
 						\ })
 		endif
 
+		" ウィンドウを開く
+		bel split
+
 		" term_startでgit for windowsのbashを実行する
 		call term_start(['bash.exe', '-l'], {
 					\ 'term_name': 'Git Bash',
 					\ 'term_finish': 'close',
-					\ 'curwin': v:false,
+					\ 'curwin': v:true,
+					\ 'term_rows': 15,
 					\ 'cwd': getcwd(),
 					\ 'env': l:env,
 					\ })

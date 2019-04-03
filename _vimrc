@@ -1,7 +1,7 @@
 ﻿scriptencoding utf-8
 " Vimの個人用設定ファイル(_vimrc)
 "
-" Last Change: 01-Apr-2019.
+" Last Change: 03-Apr-2019.
 "
 " 解説:
 " このファイルにはVimの起動時に必ず設定される、編集時の挙動に関する設定が書
@@ -49,7 +49,7 @@ if executable('pt')
 endif
 
 " grepの終了時に自動でquickfix-windowを開く
-autocmd QuickFixCmdPost *grep* cwindow
+au QuickFixCmdPost *grep* cwindow
 
 "バックアップファイルを作るディレクトリの指定
 set backupdir=~/vimfiles/vimbackup
@@ -62,7 +62,7 @@ set undodir=~/vimfiles/vimbackup
 
 " 挿入モード時にカーソル行をハイライトする
 au BufNewFile,BufRead * set nocursorline
-autocmd InsertEnter,InsertLeave * set cursorline!
+au InsertEnter,InsertLeave * set cursorline!
 
 " 日本語入力をリセット
 au BufNewFile,BufRead * set iminsert=0
