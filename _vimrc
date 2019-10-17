@@ -1,7 +1,7 @@
 ﻿scriptencoding utf-8
 " Vimの個人用設定ファイル(_vimrc)
 "
-" Last Change: 03-Apr-2019.
+" Last Change: 18-Oct-2019.
 "
 " 解説:
 " このファイルにはVimの起動時に必ず設定される、編集時の挙動に関する設定が書
@@ -30,6 +30,17 @@ set shiftwidth=4
 
 " ESCを2回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
+
+nmap ss :split<CR>
+nmap sv :vsplit<CR>
+nmap sh <C-w>h
+nmap sk <C-w>k
+nmap sj <C-w>j
+nmap sl <C-w>l
+
+nmap tn :tabnew<CR>
+nmap <S-Tab> :tabprev<CR>
+nmap <Tab> :tabnext<CR>
 
 " 挿入モードに移行したとき、IMEを自動でONにしない
 set iminsert=0
